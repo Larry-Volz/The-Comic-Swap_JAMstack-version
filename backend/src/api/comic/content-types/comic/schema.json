@@ -1,0 +1,107 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comics",
+  "info": {
+    "singularName": "comic",
+    "pluralName": "comics",
+    "displayName": "Comic",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cgc_num": {
+      "type": "uid"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "issue_num": {
+      "type": "integer"
+    },
+    "cgc_grade": {
+      "type": "decimal",
+      "min": 0.5,
+      "max": 10
+    },
+    "assessed_value": {
+      "type": "decimal"
+    },
+    "assessed_source": {
+      "type": "string"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cover_pic": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "location": {
+      "type": "enumeration",
+      "enum": [
+        "with owner",
+        "en route to Alter Ego",
+        "at Alter Ego",
+        "en route to buyer",
+        "unknown",
+        "lost/destroyed"
+      ]
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "comics"
+    },
+    "offer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::offer.offer",
+      "inversedBy": "requests"
+    },
+    "trade_offers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::offer.offer",
+      "mappedBy": "trade_offers"
+    },
+    "pmt_offer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::offer.offer",
+      "inversedBy": "payment_offer"
+    },
+    "back_cover_pic": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "additional_media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
