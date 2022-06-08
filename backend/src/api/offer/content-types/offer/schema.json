@@ -4,7 +4,8 @@
   "info": {
     "singularName": "offer",
     "pluralName": "offers",
-    "displayName": "Offer"
+    "displayName": "Offer",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +14,8 @@
   "attributes": {
     "offer_id": {
       "type": "uid",
-      "required": true
+      "required": true,
+      "default": "3js7la9JK7d"
     },
     "title": {
       "type": "string"
@@ -29,12 +31,6 @@
       "relation": "manyToOne",
       "target": "api::comic.comic",
       "inversedBy": "trade_offers"
-    },
-    "payment_offer": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::comic.comic",
-      "mappedBy": "pmt_offer"
     },
     "user_requesting": {
       "type": "relation",
@@ -63,6 +59,9 @@
       "relation": "oneToOne",
       "target": "api::deal.deal",
       "inversedBy": "offer"
+    },
+    "payment_offer": {
+      "type": "decimal"
     }
   }
 }

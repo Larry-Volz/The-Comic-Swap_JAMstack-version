@@ -77,11 +77,12 @@
       "type": "string"
     },
     "profile_pic": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "address1": {
       "type": "string"
@@ -91,10 +92,6 @@
     },
     "city": {
       "type": "string"
-    },
-    "state": {
-      "type": "string",
-      "maxLength": 2
     },
     "zip": {
       "type": "string"
@@ -115,13 +112,68 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::offer.offer",
-      "inversedBy": "user_requesting"
+      "mappedBy": "user_requesting"
     },
     "responding_user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::offer.offer",
-      "inversedBy": "user_responding"
+      "mappedBy": "user_responding"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "AK",
+        "AL",
+        "AR",
+        "AZ",
+        "CA",
+        "CO",
+        "CT",
+        "DE",
+        "FL",
+        "GA",
+        "HI",
+        "IA",
+        "ID",
+        "IL",
+        "IN",
+        "KS",
+        "KY",
+        "LA",
+        "MA",
+        "MD",
+        "ME",
+        "MI",
+        "MN",
+        "MO",
+        "MS",
+        "MT",
+        "NC",
+        "ND",
+        "NE",
+        "NH",
+        "NJ",
+        "NM",
+        "NV",
+        "NY",
+        "OH",
+        "OK",
+        "OR",
+        "PA",
+        "RI",
+        "SC",
+        "SD",
+        "TN",
+        "TX",
+        "UT",
+        "VA",
+        "VT",
+        "WA",
+        "WI",
+        "WV",
+        "WY"
+      ]
     }
   }
 }

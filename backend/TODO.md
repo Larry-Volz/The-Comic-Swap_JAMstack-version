@@ -1,0 +1,5 @@
+- change year field in strapi to a dynamic field that updates every year so current year is included
+- make offer id (and other u_id's) generate from library I learned about in springboard ______ name of it? and code to make sure it really is unique
+- make logic to attribute date to age
+- ask permission from cgc for pics and text on pedigrees (will attribute)
+- 

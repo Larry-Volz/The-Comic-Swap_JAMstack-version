@@ -19,7 +19,7 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::offer.offer",
-      "inversedBy": "deal"
+      "mappedBy": "deal"
     },
     "payment_status": {
       "type": "enumeration",

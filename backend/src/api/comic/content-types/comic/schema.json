@@ -58,7 +58,8 @@
         "en route to buyer",
         "unknown",
         "lost/destroyed"
-      ]
+      ],
+      "default": "with owner"
     },
     "owner": {
       "type": "relation",
@@ -78,12 +79,6 @@
       "target": "api::offer.offer",
       "mappedBy": "trade_offers"
     },
-    "pmt_offer": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::offer.offer",
-      "inversedBy": "payment_offer"
-    },
     "back_cover_pic": {
       "type": "media",
       "multiple": false,
@@ -102,6 +97,27 @@
         "videos",
         "audios"
       ]
+    },
+    "Publisher": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "max": 2022,
+      "min": 1897
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "signed": {
+      "type": "boolean",
+      "default": false
+    },
+    "pedigree": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::pedigree.pedigree",
+      "inversedBy": "comics"
     }
   }
 }
