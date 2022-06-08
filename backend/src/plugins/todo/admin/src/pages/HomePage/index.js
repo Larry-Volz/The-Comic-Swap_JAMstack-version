@@ -17,6 +17,18 @@ const HomePage = () => {
     setTodoData([...todoData, { ...data, id: nanoid(), isDone: false }]);
   }
 
+  async function toggleTodo(data) {
+    alert("Add Toggle Todo in API");
+  }
+
+  async function deleteTodo(data) {
+    alert("Add Delete Todo in API");
+  }
+
+  async function editTodo(id, data) {
+    alert("Add Edit Todo in API");
+  }
+
   return (
     <>
       <BaseHeaderLayout
