@@ -4,15 +4,24 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useState } from "react";
+
+import { BaseHeaderLayout, ContentLayout } from "@strapi/design-system/Layout";
+
+import { EmptyStateLayout } from "@strapi/design-system/EmptyStateLayout";
+import { Illo } from "../../components/Illo";
+import { Button } from "@strapi/design-system/Button";
+import Plus from "@strapi/icons/Plus";
+
 // import PropTypes from 'prop-types';
-import pluginId from '../../pluginId';
-import { Layout } from '@strapi/design-system/Layout';
-import { BaseHeaderLayout, HeaderLayout, ContentLayout } from '@strapi/design-system/Layout';
+
+
 
 const HomePage = () => {
+  const [todoData, setTodoData] = useState([]);
+
   return (
-    <Layout>
+    <>
       
       <BaseHeaderLayout
         title="Larry's Home made Todo Plugin"
@@ -21,10 +30,27 @@ const HomePage = () => {
       />
 
       <ContentLayout>
-        <p>Great things are afoot!</p>
+        {todoData.length === 0 ? (
+          <EmptyStateLayout
+          icon={<Illo />}
+          content="You don't have any todos yet..."
+          action={
+            <Button
+              onClick={() => setShowModal(true)}
+              variant="secondary"
+              startIcon={<Plus />}
+            >
+              Add your first todo
+            </Button>
+          }
+        />
+        ):(
+          "you have some"
+          // add count and table componennet here
+        )}
       </ContentLayout>
       
-    </Layout>
+    </>
   );
 };
 
