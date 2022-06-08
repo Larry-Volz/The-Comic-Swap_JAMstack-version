@@ -7,6 +7,9 @@ import { Button } from "@strapi/design-system/Button";
 import Plus from "@strapi/icons/Plus";
 import TodoModal from "../../components/TodoModal";
 
+import TodoCount from "../../components/TodoCount";
+import TodoTable from "../../components/TodoTable";
+
 // import PropTypes from 'prop-types';
 
 const HomePage = () => {
@@ -53,7 +56,17 @@ const HomePage = () => {
             }
           />
         ) : (
-          <h2>You have {todoData.length} count</h2>
+          <>
+            <TodoCount count={todoData.length} />
+
+            <TodoTable
+              todoData={todoData}
+              setShowModal={setShowModal}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          </>
         )}
       </ContentLayout>
 
