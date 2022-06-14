@@ -1,7 +1,7 @@
 import React, { memo, useState, useEffect } from "react";
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 import todoRequests from "../../api/todo"
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 import { BaseHeaderLayout, ContentLayout } from "@strapi/design-system/Layout";
 import { EmptyStateLayout } from "@strapi/design-system/EmptyStateLayout";
 import { Illo } from "../../components/Illo";
@@ -33,19 +33,22 @@ const HomePage = () => {
   }, [])
 
   async function addTodo(data) {
-    setTodoData([...todoData, { ...data, id: nanoid(), isDone: false }]);
+    await todoRequests.addTodo(data);
+    await fetchData();
   }
-
+  
   async function toggleTodo(data) {
-    alert("Add Toggle Todo in API");
+    await todoRequests.toggleTodo(data.id);
   }
-
+  
   async function deleteTodo(data) {
-    alert("Add Delete Todo in API");
+    await todoRequests.deleteTodo(data.id);
+    await fetchData();
   }
-
+  
   async function editTodo(id, data) {
-    alert("Add Edit Todo in API");
+    await todoRequests.editTodo(id, data);
+    await fetchData();
   }
 
   if (isLoading) return <LoadingIndicatorPage />
