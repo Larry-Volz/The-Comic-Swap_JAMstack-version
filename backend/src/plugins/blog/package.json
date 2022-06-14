@@ -1,12 +1,12 @@
 {
-  "name": "todo",
+  "name": "blog",
   "version": "0.0.0",
-  "description": "A To Do plugin.",
+  "description": "A CRUD API for writing blogs.",
   "strapi": {
-    "name": "todo",
-    "description": "A Todo plugin",
+    "name": "blog",
+    "description": "A CRUD API for writing blogs",
     "kind": "plugin",
-    "displayName": "Todo"
+    "displayName": "Blog"
   },
   "dependencies": {},
   "author": {
