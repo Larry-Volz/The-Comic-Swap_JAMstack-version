@@ -6,7 +6,6 @@ module.exports = [
     handler: "myController.index",
     config: {
       policies: [],
-      auth: false,
     },
   },
 
@@ -16,7 +15,6 @@ module.exports = [
     handler: "todo.find",
     config: {
       policies: [],
-      auth: false,
     },
   },
 
@@ -26,7 +24,6 @@ module.exports = [
     handler: "todo.create",
     config: {
       policies: [],
-      auth: false,
     },
   },
 
@@ -36,7 +33,6 @@ module.exports = [
     handler: "todo.delete",
     config: {
       policies: [],
-      auth: false,
     },
   },
 
@@ -46,7 +42,6 @@ module.exports = [
     handler: "todo.toggle",
     config: {
       policies: [],
-      auth: false,
     },
   },
 
@@ -56,7 +51,6 @@ module.exports = [
     handler: "todo.update",
     config: {
       policies: [],
-      auth: false,
     },
   },
 ]; 
