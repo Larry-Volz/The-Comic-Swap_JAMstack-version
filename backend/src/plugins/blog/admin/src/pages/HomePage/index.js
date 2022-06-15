@@ -7,6 +7,8 @@
 import React, { memo, useState } from "react";
 
 // import PropTypes from 'prop-types';
+import { nanoid } from "nanoid";
+
 import pluginId from '../../pluginId';
 
 import { Layout } from '@strapi/design-system/Layout';
@@ -17,9 +19,18 @@ import { Illo } from "../../../../../todo/admin/src/components/Illo";
 import { Button } from "@strapi/design-system/Button";
 import Plus from "@strapi/icons/Plus";
 
+import BlogModal from "../../components/BlogModal";
+
 
 const HomePage = () => {
   const [blogData, setBlogData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  
+
+  async function addBlog(data) {
+    setBlogData([...blogData, { ...data, id: nanoid(), storyCopy: "test" }]);
+  }
 
   return (
     <div>
@@ -47,17 +58,18 @@ const HomePage = () => {
                   variant="secondary"
                   startIcon={<Plus />}
                 >
-                  Add your first todo
+                  Write your first Article
                 </Button>
               }
             />
           ) : ( 
-            <p>add count and table component here</p>
+            <h2>You have {blogData.length} articles</h2>
          )
         }
 
-
       </Layout>
+
+      {showModal && <BlogModal setShowModal={setShowModal} addBlog={addBlog} />}
 
     </div>
   );
