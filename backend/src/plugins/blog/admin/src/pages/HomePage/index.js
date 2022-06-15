@@ -11,6 +11,11 @@ import pluginId from '../../pluginId';
 
 import { Layout } from '@strapi/design-system/Layout';
 import {ContentLayout, BaseHeaderLayout } from '@strapi/design-system/Layout';
+import { EmptyStateLayout } from "@strapi/design-system/EmptyStateLayout";
+import { Illo } from "../../../../../todo/admin/src/components/Illo";
+
+import { Button } from "@strapi/design-system/Button";
+import Plus from "@strapi/icons/Plus";
 
 
 const HomePage = () => {
@@ -22,7 +27,7 @@ const HomePage = () => {
       <Layout>
 
         <BaseHeaderLayout
-          title="Blog Plugin"
+          title="Blog"
           subtitle ="What's new in YOUR universe?"
           as="h2"
         />
@@ -33,7 +38,19 @@ const HomePage = () => {
 
         {blogData.length === 0  ? 
           (
-            <p>add emptystate component here</p>
+            <EmptyStateLayout
+              icon={<Illo />}
+              content="You don't have any blog articles yet..."
+              action={
+                <Button
+                  onClick={() => setShowModal(true)}
+                  variant="secondary"
+                  startIcon={<Plus />}
+                >
+                  Add your first todo
+                </Button>
+              }
+            />
           ) : ( 
             <p>add count and table component here</p>
          )
