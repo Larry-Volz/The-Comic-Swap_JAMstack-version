@@ -20,6 +20,8 @@ import { Button } from "@strapi/design-system/Button";
 import Plus from "@strapi/icons/Plus";
 
 import BlogModal from "../../components/BlogModal";
+import BlogTable from "../../components/BlogTable";
+import BlogCount from "../../components/BlogCount";
 
 
 const HomePage = () => {
@@ -30,6 +32,18 @@ const HomePage = () => {
 
   async function addBlog(data) {
     setBlogData([...blogData, { ...data, id: nanoid(), storyCopy: "test" }]);
+  }
+
+  async function toggleBlog(data) {
+    alert("Add Toggle Blog in API");
+  }
+  
+  async function deleteBlog(data) {
+    alert("Add Delete Blog in API");
+  }
+  
+  async function editBlog(id, data) {
+    alert("Add Edit Blog in API");
   }
 
   return (
@@ -63,8 +77,18 @@ const HomePage = () => {
               }
             />
           ) : ( 
-            <h2>You have {blogData.length} articles</h2>
-         )
+            <>
+            <BlogCount count={blogData.length} />
+
+            <BlogTable
+              blogData={blogData}
+              setShowModal={setShowModal}
+              // toggleBlog={toggleBlog}
+              deleteBlog={deleteBlog}
+              editBlog={editBlog}
+            />
+            </>
+        )
         }
 
       </Layout>
