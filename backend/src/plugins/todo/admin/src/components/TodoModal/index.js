@@ -10,7 +10,10 @@ import {
   TextInput,
 } from "@strapi/design-system";
 
+
+
 export default function TodoModal({ setShowModal, addTodo }) {
+  
   const [name, setName] = useState("");
 
   const handleSubmit = async (e) => {

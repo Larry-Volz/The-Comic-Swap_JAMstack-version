@@ -8,12 +8,14 @@ import {
   Typography,
   Button,
   TextInput,
+  Textarea
 } from "@strapi/design-system";
 
 
 export default function BlogModal({ setShowModal, addBlog }) {
 
   const [storyTitle, setStoryTitle] = useState("");
+  const [storyContent, setStoryContent] = useState("");
 
   const handleSubmit = async (e) => {
     // Prevent submitting parent form
@@ -21,7 +23,10 @@ export default function BlogModal({ setShowModal, addBlog }) {
     e.stopPropagation();
 
     try {
-      await addBlog({ storyTitle: storyTitle });
+      await addBlog({ 
+        storyTitle: storyTitle,
+        storyContent: storyContent
+       });
       setShowModal(false);
     } catch (e) {
       console.log("error", e);
@@ -52,15 +57,31 @@ export default function BlogModal({ setShowModal, addBlog }) {
       </ModalHeader>
 
       <ModalBody>
-        <TextInput
+       <>
+       <TextInput
           placeholder="Story title?"
-          label="storyTitle"
+          label="Story Title"
           name="text"
           hint="Max 40 characters"
           error={getError()}
           onChange={(e) => setStoryTitle(e.target.value)}
           value={storyTitle}
+          />
+
+        <div style={{marginBottom: '40px'}}></div>
+
+        <Textarea
+          placeholder="Story content?"
+          label="Story Content"
+          name="textContent"
+          // hint="Max 40 characters"
+          // error={getError()}
+          onChange={(e) => setStoryContent(e.target.value)}
+          value={storyContent}
+          style= {{ rows: 5}}
         />
+
+       </>
       </ModalBody>
 
       <ModalFooter

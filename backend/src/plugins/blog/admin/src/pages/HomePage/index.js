@@ -31,7 +31,7 @@ const HomePage = () => {
   
 
   async function addBlog(data) {
-    setBlogData([...blogData, { ...data, id: nanoid(), storyCopy: "test" }]);
+    setBlogData([...blogData, { ...data, id: nanoid() }]);
   }
 
   async function toggleBlog(data) {

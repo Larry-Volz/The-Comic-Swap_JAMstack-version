@@ -16,28 +16,29 @@ import { IconButton } from "@strapi/design-system/IconButton";
 import { VisuallyHidden } from "@strapi/design-system/VisuallyHidden";
 import { BaseCheckbox } from "@strapi/design-system/BaseCheckbox";
 import { TextInput } from "@strapi/design-system/TextInput";
+import { Textarea } from "@strapi/design-system/Textarea";
 import Pencil from "@strapi/icons/Pencil";
 import Trash from "@strapi/icons/Trash";
 import Plus from "@strapi/icons/Plus";
 
-// function BlogCheckbox({ value, checkboxID, callback, disabled }) {
-//   const [isChecked, setIsChecked] = useState(value);
+function BlogCheckbox({ value, blogID, callback, disabled }) {
+  const [isChecked, setIsChecked] = useState(value);
 
-//   function handleChange() {
-//     setIsChecked(!isChecked);
-//     {
-//       callback && callback({ id: checkboxID, value: !isChecked });
-//     }
-//   }
+  function handleChange() {
+    setIsChecked(!isChecked);
+    {
+      callback && callback({ id: blogID, value: !isChecked });
+    }
+  }
 
-//   return (
-//     <BaseCheckbox
-//       checked={isChecked}
-//       onChange={handleChange}
-//       disabled={disabled}
-//     />
-//   );
-// }
+  return (
+    <BaseCheckbox
+      checked={isChecked}
+      onChange={handleChange}
+      disabled={disabled}
+    />
+  );
+}
 
 function BlogInput({ value, onChange }) {
   return (
@@ -83,11 +84,11 @@ export default function BlogTable({
             </Th>
 
             <Th>
-              <Typography variant="sigma">Blog</Typography>
+              <Typography variant="sigma">Title</Typography>
             </Th>
 
             <Th>
-              <Typography variant="sigma">Status</Typography>
+              <Typography variant="sigma">Content</Typography>
             </Th>
 
             <Th>
@@ -98,7 +99,9 @@ export default function BlogTable({
 
         <Tbody>
           {blogData.map((blog) => {
-            const [inputValue, setInputValue] = useState(blog.name);
+            const [titleInputValue, setTitleInputValue] = useState(blog.storyTitle);
+            const [contentInputValue, setContentInputValue] = useState(blog.storyContent);
+
 
             const [isEdit, setIsEdit] = useState(false);
 
@@ -111,11 +114,11 @@ export default function BlogTable({
                 <Td>
                   {isEdit ? (
                     <BlogInput
-                      value={inputValue}
-                      onChange={(e) => setInputValue(e.target.value)}
+                      value={titleInputValue}
+                      onChange={(e) => setTitleInputValue(e.target.value)}
                     />
                   ) : (
-                    <Typography textColor="neutral800">{blog.name}</Typography>
+                    <Typography textColor="neutral800">{blog.storyTitle}</Typography>
                   )}
                 </Td>
 
@@ -126,13 +129,22 @@ export default function BlogTable({
                     callback={toggleBlog}
                     disabled={isEdit}
                   /> */}
+
+                  {isEdit ? (
+                    <BlogInput
+                      value={contentInputValue}
+                      onChange={(e) => setContentInputValue(e.target.value)}
+                    />
+                  ) : (
+                    <Typography textColor="neutral800">{blog.storyContent.slice(0,20)+"..."}</Typography>
+                  )}
                 </Td>
 
                 <Td>
                   {isEdit ? (
                     <Flex style={{ justifyContent: "end" }}>
                       <Button
-                        onClick={() => editBlog(blog.id, { name: inputValue })}
+                        onClick={() => editBlog(blog.id, { name: titleInputValue })}
                       >
                         Save
                       </Button>

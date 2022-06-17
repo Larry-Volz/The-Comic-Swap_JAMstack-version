@@ -3,7 +3,7 @@ import { Box } from "@strapi/design-system/Box";
 import { Flex } from "@strapi/design-system/Flex";
 import { Typography } from "@strapi/design-system/Typography";
 
-export default function TodoCount({ count }) {
+export default function BlogCount({ count }) {
   return (
     <Box background="neutral0" hasRadius={true} shadow="filterShadow">
       <Flex justifyContent="center" padding={8}>
