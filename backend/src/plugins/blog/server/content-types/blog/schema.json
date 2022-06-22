@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blogs",
+  "info": {
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": ""
+  },
+  "pluginOptions": {
+    "content-manager":{
+      "visible":false
+    },
+    "content-type-builder":{
+      "visible":false
+    }
+  },
+  "attributes": {
+    "storyTitle": {
+      "type": "string",
+      "required":true,
+      "maxLength":60
+    },
+    "storyContent": {
+      "type": "richtext",
+      "required":true
+    },
+    "author": {
+      "type": "integer"
+    }
+  }
+}
